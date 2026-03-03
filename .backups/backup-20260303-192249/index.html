@@ -1383,45 +1383,11 @@
 
             <!-- BUSCA -->
             <div id="buscaPage" class="content-section">
-                <h2 class="section-title">🔍 Busca em Tempo Real</h2>
-                <p style="color: #b0b0b0; margin-bottom: 20px;">Encontre informações completas sobre seus jogos favoritos</p>
-                
-                <div class="search-container" style="margin-bottom: 30px;">
-                    <input type="text" class="search-input" id="gamesSearchInput" placeholder="Digite o nome do jogo..." onkeyup="filterGames()" style="width: 100%; padding: 15px; font-size: 16px;">
+                <h2 class="section-title">🔍 Buscar Guias</h2>
+                <div class="search-container">
+                    <input type="text" class="search-input" id="searchInput" placeholder="Buscar por jogo, estratégia ou dica..." onkeyup="searchGuides()">
                 </div>
-                
-                <div style="display: flex; gap: 15px; margin-bottom: 20px; flex-wrap: wrap;">
-                    <div>
-                        <label style="color: #b0b0b0; font-size: 12px;">Gênero:</label>
-                        <select id="genreFilter" onchange="filterGames()" style="padding: 8px; background: rgba(124, 58, 237, 0.2); border: 1px solid #7c3aed; color: #fff; border-radius: 5px;">
-                            <option value="">Todos os Gêneros</option>
-                            <option value="Battle Royale">Battle Royale</option>
-                            <option value="MOBA">MOBA</option>
-                            <option value="FPS">FPS</option>
-                            <option value="RPG">RPG</option>
-                            <option value="Plataforma">Plataforma</option>
-                            <option value="Simulação">Simulação</option>
-                            <option value="Puzzle">Puzzle</option>
-                            <option value="Sandbox">Sandbox</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label style="color: #b0b0b0; font-size: 12px;">Plataforma:</label>
-                        <select id="platformFilter" onchange="filterGames()" style="padding: 8px; background: rgba(124, 58, 237, 0.2); border: 1px solid #7c3aed; color: #fff; border-radius: 5px;">
-                            <option value="">Todas as Plataformas</option>
-                            <option value="PC">PC</option>
-                            <option value="Mobile">Mobile</option>
-                            <option value="Console">Console</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-                    <button class="btn btn-primary" onclick="showTrendingGames()" style="padding: 10px 20px; font-size: 14px;">🔥 Em Tendência</button>
-                    <button class="btn btn-secondary" onclick="showTopGames()" style="padding: 10px 20px; font-size: 14px;">🏆 Top 10</button>
-                </div>
-                
-                <div id="gamesResultsContainer" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;"></div>
+                <div class="guides-grid" id="searchResults"></div>
             </div>
 
             <!-- CHAT -->
@@ -2721,6 +2687,11 @@ if (typeof module !== 'undefined' && module.exports) {
     };
 }
 
+
+    // Carregar banco de dados de jogos
+    const gamesDatabase = [
+    // TOP TIER - MAIS POPULARES
+    {id: 1, name: "Roblox", icon: "🎮", genre: "Plataforma/Criação", platform: ["Mobile", "PC", "Console"], players: "380M+", rating: 4.5, description: "Plataforma líder em engajamento com mais de 380 milhões de usuários mensais", guides: ["Como criar seu primeiro jogo", "Monetização no Roblox", "Dicas de desenvolvimento", "Scripting Lua avançado"], strategies: ["Construir experiências virais", "Engajar comunidade", "Otimizar performance", "Marketing de jogos"], updates: "Atualizado diariamente com novos jogos e features", trending: true},
     
     {id: 2, name: "Minecraft", icon: "⛏️", genre: "Sandbox/Criação", platform: ["PC", "Mobile", "Console"], players: "300M+", rating: 4.9, description: "O rei do sandbox criativo com comunidade massiva", guides: ["Guia completo para iniciantes", "Construindo estruturas épicas", "Dominar o Nether e End", "Redstone avançado"], strategies: ["Farm automática de recursos", "Construção eficiente", "Speedrun techniques", "PvP strategies"], updates: "Atualização 1.21 com novos blocos e criaturas", trending: true},
     
@@ -3026,101 +2997,6 @@ if (typeof module !== 'undefined' && module.exports) {
             closePortfolio();
         }
     });
-
-    // ===== FUNÇÕES DE BUSCA DE JOGOS =====
-    function filterGames() {
-        const searchTerm = document.getElementById('gamesSearchInput').value.toLowerCase();
-        const genreFilter = document.getElementById('genreFilter').value;
-        const platformFilter = document.getElementById('platformFilter').value;
-        
-        let filtered = gamesDatabase.filter(game => {
-            const matchesSearch = game.name.toLowerCase().includes(searchTerm) || 
-                                game.genre.toLowerCase().includes(searchTerm);
-            const matchesGenre = !genreFilter || game.genre.includes(genreFilter);
-            const matchesPlatform = !platformFilter || game.platform.includes(platformFilter);
-            
-            return matchesSearch && matchesGenre && matchesPlatform;
-        });
-        
-        displayGameResults(filtered);
-    }
-    
-    function showTrendingGames() {
-        const trending = gamesDatabase.filter(g => g.trending);
-        displayGameResults(trending);
-    }
-    
-    function showTopGames() {
-        const top = gamesDatabase.sort((a, b) => b.rating - a.rating).slice(0, 10);
-        displayGameResults(top);
-    }
-    
-    function displayGameResults(games) {
-        const container = document.getElementById('gamesResultsContainer');
-        
-        if (games.length === 0) {
-            container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #b0b0b0; padding: 40px;">Nenhum jogo encontrado</div>';
-            return;
-        }
-        
-        container.innerHTML = games.map(game => `
-            <div style="background: rgba(124, 58, 237, 0.1); border: 1px solid rgba(124, 58, 237, 0.3); border-radius: 10px; padding: 15px; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(124, 58, 237, 0.2)'" onmouseout="this.style.background='rgba(124, 58, 237, 0.1)'" onclick="openGamePortfolio(${game.id})">
-                <div style="font-size: 32px; margin-bottom: 10px;">${game.icon}</div>
-                <div style="font-weight: bold; font-size: 16px; margin-bottom: 5px;">${game.name}</div>
-                <div style="color: #b0b0b0; font-size: 12px; margin-bottom: 10px;">${game.genre}</div>
-                <div style="display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 12px;">
-                    <span>👥 ${game.players}</span>
-                    <span>⭐ ${game.rating}/5</span>
-                </div>
-                <div style="color: #b0b0b0; font-size: 12px; margin-bottom: 10px;">${game.platform.join(', ')}</div>
-                ${game.trending ? '<div style="color: #ff6b6b; font-size: 11px; font-weight: bold;">🔥 EM TENDÊNCIA</div>' : ''}
-                <button class="btn btn-primary" style="width: 100%; margin-top: 10px; padding: 8px; font-size: 12px;">📖 Ver Portfólio</button>
-            </div>
-        `).join('');
-    }
-    
-    function openGamePortfolio(gameId) {
-        const game = gamesDatabase.find(g => g.id === gameId);
-        if (game) {
-            showGamePortfolio(game);
-        }
-    }
-    
-    // Carregar jogos ao abrir página de busca
-    document.addEventListener('DOMContentLoaded', () => {
-        if (gamesDatabase && gamesDatabase.length > 0) {
-            displayGameResults(gamesDatabase);
-        }
-    });
-    
-    // Carregar jogos quando navega para a página de busca
-    function navigateTo(page) {
-        document.querySelectorAll('.content-section').forEach(section => {
-            section.classList.remove('active');
-        });
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.classList.remove('active');
-        });
-        
-        if (page === 'busca') {
-            document.getElementById('buscaPage').classList.add('active');
-            if (gamesDatabase && gamesDatabase.length > 0) {
-                displayGameResults(gamesDatabase);
-            }
-        } else if (page === 'home') {
-            document.getElementById('homePage').classList.add('active');
-        } else if (page === 'chat') {
-            document.getElementById('chatPage').classList.add('active');
-        } else if (page === 'comunidade') {
-            document.getElementById('comunidadePage').classList.add('active');
-        } else if (page === 'favoritos') {
-            document.getElementById('favoritosPage').classList.add('active');
-        } else if (page === 'perfil') {
-            document.getElementById('perfilPage').classList.add('active');
-        }
-        
-        event.target.classList.add('active');
-    }
 
 </script>
 </body>
