@@ -1,0 +1,21 @@
+{
+  "name": "gamemaster-pro",
+  "version": "1.0.0",
+  "description": "GameMaster Pro - Plataforma de Guias e Estratégias de Gaming",
+  "main": "index.js",
+  "scripts": {
+    "dev": "http-server -p 3000 -c-1",
+    "start": "http-server -p 3000 -c-1",
+    "build": "echo 'No build needed for static site'"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.0",
+    "chart.js": "^4.4.0"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "keywords": ["gaming", "guides", "strategies", "community"],
+  "author": "GameMaster Team",
+  "license": "MIT"
+}
