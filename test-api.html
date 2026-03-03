@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameMaster Pro - Teste da API</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      color: white;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .status {
+      display: inline-block;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      color: white;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .status.online {
+      background: #4CAF50;
+    }
+
+    .status.offline {
+      background: #f44336;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h2 {
+      color: #667eea;
+      margin-bottom: 15px;
+      font-size: 1.3em;
+    }
+
+    .card p {
+      color: #666;
+      margin-bottom: 10px;
+      font-size: 0.9em;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+
+    input, select {
+      flex: 1;
+      min-width: 100px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 0.9em;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #667eea;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #764ba2;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    .output {
+      background: #f5f5f5;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 15px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85em;
+      max-height: 300px;
+      overflow-y: auto;
+      color: #333;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .output.loading {
+      color: #667eea;
+    }
+
+    .output.error {
+      color: #f44336;
+      background: #ffebee;
+    }
+
+    .output.success {
+      color: #4CAF50;
+      background: #f1f8e9;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 5px 10px;
+      background: #667eea;
+      color: white;
+      border-radius: 20px;
+      font-size: 0.8em;
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+
+    .badge.game {
+      background: #00BCD4;
+    }
+
+    .badge.type {
+      background: #FF9800;
+    }
+
+    .badge.level {
+      background: #9C27B0;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .stat {
+      background: #f5f5f5;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #667eea;
+    }
+
+    .stat-label {
+      font-size: 0.8em;
+      color: #999;
+      margin-top: 5px;
+    }
+
+    .game-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .game-item {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 15px;
+      border-radius: 5px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .game-item:hover {
+      transform: scale(1.05);
+    }
+
+    .game-icon {
+      font-size: 2em;
+      margin-bottom: 5px;
+    }
+
+    .game-name {
+      font-size: 0.9em;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.8em;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .controls {
+        flex-direction: column;
+      }
+
+      input, select {
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🎮 GameMaster Pro - Teste da API</h1>
+      <div class="status" id="status">Conectando...</div>
+    </header>
+
+    <div class="grid">
+      <!-- Card: Health Check -->
+      <div class="card">
+        <h2>🏥 Health Check</h2>
+        <p>Verifica se a API está online</p>
+        <button onclick="testHealth()">Testar Conexão</button>
+        <div class="output" id="health-output"></div>
+      </div>
+
+      <!-- Card: Listar Jogos -->
+      <div class="card">
+        <h2>🎮 Listar Jogos</h2>
+        <p>Retorna todos os jogos disponíveis</p>
+        <button onclick="getGames()">Listar Jogos</button>
+        <div class="output" id="games-output"></div>
+      </div>
+
+      <!-- Card: Buscar por Jogo -->
+      <div class="card">
+        <h2>🔍 Buscar por Jogo</h2>
+        <p>Retorna dados de um jogo específico</p>
+        <div class="controls">
+          <select id="game-select">
+            <option value="fortnite">Fortnite</option>
+            <option value="lol">League of Legends</option>
+            <option value="minecraft">Minecraft</option>
+          </select>
+          <input type="number" id="game-level" value="10" min="1" max="20" placeholder="Nível">
+          <button onclick="getGame()">Buscar</button>
+        </div>
+        <div class="output" id="game-output"></div>
+      </div>
+
+      <!-- Card: Buscar por Tipo -->
+      <div class="card">
+        <h2>📋 Buscar por Tipo</h2>
+        <p>Retorna dados de um tipo específico</p>
+        <div class="controls">
+          <select id="type-game">
+            <option value="fortnite">Fortnite</option>
+            <option value="lol">League of Legends</option>
+            <option value="minecraft">Minecraft</option>
+          </select>
+          <select id="type-select">
+            <option value="strategies">Estratégias</option>
+            <option value="news">Notícias</option>
+            <option value="products">Produtos</option>
+            <option value="coupons">Cupons</option>
+            <option value="future">Futuro</option>
+          </select>
+          <input type="number" id="type-level" value="10" min="1" max="20" placeholder="Nível">
+          <button onclick="getType()">Buscar</button>
+        </div>
+        <div class="output" id="type-output"></div>
+      </div>
+
+      <!-- Card: Buscar -->
+      <div class="card">
+        <h2>🔎 Buscar</h2>
+        <p>Busca em todos os dados</p>
+        <div class="controls">
+          <input type="text" id="search-query" placeholder="Ex: building, strategy..." value="building">
+          <input type="number" id="search-level" value="10" min="1" max="20" placeholder="Nível">
+          <button onclick="search()">Buscar</button>
+        </div>
+        <div class="output" id="search-output"></div>
+      </div>
+
+      <!-- Card: Sincronizar -->
+      <div class="card">
+        <h2>🔄 Sincronizar</h2>
+        <p>Sincroniza dados com Supabase</p>
+        <button onclick="sync()">Sincronizar Agora</button>
+        <div class="output" id="sync-output"></div>
+      </div>
+    </div>
+
+    <!-- Estatísticas -->
+    <div class="card">
+      <h2>📊 Estatísticas</h2>
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-value" id="stat-requests">0</div>
+          <div class="stat-label">Requisições</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="stat-cache">0</div>
+          <div class="stat-label">Cache Hits</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="stat-errors">0</div>
+          <div class="stat-label">Erros</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value" id="stat-uptime">0s</div>
+          <div class="stat-label">Uptime</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/api-client.js"></script>
+  <script>
+    let stats = {
+      requests: 0,
+      cacheHits: 0,
+      errors: 0,
+      startTime: Date.now(),
+    };
+
+    // Atualizar uptime
+    setInterval(() => {
+      const uptime = Math.floor((Date.now() - stats.startTime) / 1000);
+      document.getElementById('stat-uptime').textContent = `${uptime}s`;
+    }, 1000);
+
+    // Atualizar estatísticas
+    function updateStats() {
+      document.getElementById('stat-requests').textContent = stats.requests;
+      document.getElementById('stat-cache').textContent = stats.cacheHits;
+      document.getElementById('stat-errors').textContent = stats.errors;
+    }
+
+    // Mostrar output
+    function showOutput(elementId, data, isError = false) {
+      const element = document.getElementById(elementId);
+      element.className = 'output ' + (isError ? 'error' : 'success');
+      element.textContent = JSON.stringify(data, null, 2);
+      stats.requests++;
+      updateStats();
+    }
+
+    // Testar conexão
+    async function testHealth() {
+      try {
+        const output = document.getElementById('health-output');
+        output.className = 'output loading';
+        output.textContent = 'Testando...';
+
+        const data = await gameAPI.health();
+        showOutput('health-output', data);
+
+        // Atualizar status
+        document.getElementById('status').className = 'status online';
+        document.getElementById('status').textContent = '✅ Online';
+      } catch (error) {
+        showOutput('health-output', { error: error.message }, true);
+        document.getElementById('status').className = 'status offline';
+        document.getElementById('status').textContent = '❌ Offline';
+        stats.errors++;
+        updateStats();
+      }
+    }
+
+    // Listar jogos
+    async function getGames() {
+      try {
+        const output = document.getElementById('games-output');
+        output.className = 'output loading';
+        output.textContent = 'Carregando...';
+
+        const data = await gameAPI.getGames();
+        showOutput('games-output', data);
+      } catch (error) {
+        showOutput('games-output', { error: error.message }, true);
+        stats.errors++;
+        updateStats();
+      }
+    }
+
+    // Buscar jogo
+    async function getGame() {
+      try {
+        const game = document.getElementById('game-select').value;
+        const level = parseInt(document.getElementById('game-level').value);
+
+        const output = document.getElementById('game-output');
+        output.className = 'output loading';
+        output.textContent = 'Carregando...';
+
+        const data = await gameAPI.getGame(game, level);
+        showOutput('game-output', data);
+      } catch (error) {
+        showOutput('game-output', { error: error.message }, true);
+        stats.errors++;
+        updateStats();
+      }
+    }
+
+    // Buscar tipo
+    async function getType() {
+      try {
+        const game = document.getElementById('type-game').value;
+        const type = document.getElementById('type-select').value;
+        const level = parseInt(document.getElementById('type-level').value);
+
+        const output = document.getElementById('type-output');
+        output.className = 'output loading';
+        output.textContent = 'Carregando...';
+
+        const data = await gameAPI.getGameType(game, type, level);
+        showOutput('type-output', data);
+      } catch (error) {
+        showOutput('type-output', { error: error.message }, true);
+        stats.errors++;
+        updateStats();
+      }
+    }
+
+    // Buscar
+    async function search() {
+      try {
+        const query = document.getElementById('search-query').value;
+        const level = parseInt(document.getElementById('search-level').value);
+
+        const output = document.getElementById('search-output');
+        output.className = 'output loading';
+        output.textContent = 'Buscando...';
+
+        const data = await gameAPI.search(query, level);
+        showOutput('search-output', data);
+      } catch (error) {
+        showOutput('search-output', { error: error.message }, true);
+        stats.errors++;
+        updateStats();
+      }
+    }
+
+    // Sincronizar
+    async function sync() {
+      try {
+        const output = document.getElementById('sync-output');
+        output.className = 'output loading';
+        output.textContent = 'Sincronizando...';
+
+        const data = await gameAPI.sync();
+        showOutput('sync-output', data);
+      } catch (error) {
+        showOutput('sync-output', { error: error.message }, true);
+        stats.errors++;
+        updateStats();
+      }
+    }
+
+    // Testar conexão ao carregar
+    window.addEventListener('load', testHealth);
+  </script>
+</body>
+</html>
