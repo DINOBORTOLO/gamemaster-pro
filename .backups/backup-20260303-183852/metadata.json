@@ -1,0 +1,11 @@
+﻿{
+    "date":  "03.03.2026 18:38:52",
+    "timestamp":  "20260303-183852",
+    "description":  "Backup automÃ¡tico",
+    "files":  [
+                  "index.html",
+                  "server\\database.js",
+                  "server\\scrapers.js",
+                  "server\\package.json"
+              ]
+}

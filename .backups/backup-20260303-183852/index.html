@@ -2530,109 +2530,893 @@
 // Atualizado: Março 2026
 
 const gamesDatabase = [
-    // TOP TIER - MAIS POPULARES
-    {id: 1, name: "Roblox", icon: "🎮", genre: "Plataforma/Criação", platform: ["Mobile", "PC", "Console"], players: "380M+", rating: 4.5, description: "Plataforma líder em engajamento com mais de 380 milhões de usuários mensais", guides: ["Como criar seu primeiro jogo", "Monetização no Roblox", "Dicas de desenvolvimento", "Scripting Lua avançado"], strategies: ["Construir experiências virais", "Engajar comunidade", "Otimizar performance", "Marketing de jogos"], updates: "Atualizado diariamente com novos jogos e features", trending: true},
-    
-    {id: 2, name: "Minecraft", icon: "⛏️", genre: "Sandbox/Criação", platform: ["PC", "Mobile", "Console"], players: "300M+", rating: 4.9, description: "O rei do sandbox criativo com comunidade massiva", guides: ["Guia completo para iniciantes", "Construindo estruturas épicas", "Dominar o Nether e End", "Redstone avançado"], strategies: ["Farm automática de recursos", "Construção eficiente", "Speedrun techniques", "PvP strategies"], updates: "Atualização 1.21 com novos blocos e criaturas", trending: true},
-    
-    {id: 3, name: "Fortnite", icon: "🎯", genre: "Battle Royale", platform: ["PC", "Mobile", "Console"], players: "250M+", rating: 4.7, description: "Fenômeno cultural multiplataforma com atualizações constantes", guides: ["Técnicas de construção avançada", "Melhor drop spots", "Guia de armas e itens", "Combate close-range"], strategies: ["Rotação de mapa eficiente", "Combate close-range", "Endgame positioning", "Building techniques"], updates: "Temporada 3 com novos personagens e armas", trending: true},
-    
-    {id: 4, name: "Free Fire", icon: "🔥", genre: "Battle Royale", platform: ["Mobile"], players: "200M+", rating: 4.6, description: "Extremamente popular no Brasil e Sudeste Asiático", guides: ["Guia de personagens", "Melhor loadout", "Dicas para iniciantes", "Mapa Bermuda"], strategies: ["Looting rápido", "Posicionamento tático", "Combate em squad", "Sobrevivência no final"], updates: "Novo mapa 'Bermuda' com mudanças", trending: true},
-    
-    {id: 5, name: "PUBG Mobile", icon: "🎖️", genre: "Battle Royale", platform: ["Mobile"], players: "150M+", rating: 4.5, description: "O battle royale mais jogado em dispositivos móveis", guides: ["Controles otimizados", "Gerenciamento de munição", "Técnicas de mira", "Loadout guide"], strategies: ["Rotação de zona", "Combate tático", "Sobrevivência no final", "Squad coordination"], updates: "Temporada 30 com novo conteúdo", trending: false},
-    
-    {id: 6, name: "League of Legends", icon: "⚔️", genre: "MOBA", platform: ["PC"], players: "180M+", rating: 4.8, description: "Principal MOBA do mundo com cena competitiva massiva", guides: ["Guia de campeões", "Posicionamento em teamfight", "Macro play avançada", "Jungle tracking"], strategies: ["Farming eficiente", "Roaming e ganking", "Baron control", "Wave management"], updates: "Patch 14.5 com balanceamento de campeões", trending: true},
-    
-    {id: 7, name: "Counter-Strike 2", icon: "🎯", genre: "FPS Tático", platform: ["PC"], players: "120M+", rating: 4.9, description: "O rei dos shooters táticos no PC", guides: ["Spray control avançado", "Callouts de mapa", "Economia de economia", "Smoke lineups"], strategies: ["Execute de site", "Anti-eco strategies", "Smoke lineups", "Retake tactics"], updates: "Patch com novo mapa 'Vertigo'", trending: true},
-    
-    {id: 8, name: "Valorant", icon: "🎮", genre: "FPS Tático", platform: ["PC"], players: "100M+", rating: 4.7, description: "Competitivo de alto nível com agentes únicos", guides: ["Guia de agentes", "Crosshair placement", "Utilidade usage", "Economy management"], strategies: ["Site execute", "Retake strategies", "Ability combos", "Positioning guide"], updates: "Novo agente 'Vyse' adicionado", trending: true},
-    
-    {id: 9, name: "Grand Theft Auto V", icon: "🚗", genre: "Mundo Aberto", platform: ["PC", "Console"], players: "180M+", rating: 4.8, description: "Ainda incrivelmente relevante enquanto aguarda GTA VI", guides: ["Guia de missões", "Dicas de roubo", "Negócio de drogas", "Heists guide"], strategies: ["Farming de dinheiro", "Heists eficientes", "PvP no GTA Online", "Business guide"], updates: "Conteúdo semanal no GTA Online", trending: false},
-    
-    {id: 10, name: "Candy Crush Saga", icon: "🍬", genre: "Puzzle", platform: ["Mobile"], players: "250M+", rating: 4.4, description: "Imbatível no público casual", guides: ["Estratégias de níveis difíceis", "Uso de power-ups", "Combos especiais", "Booster guide"], strategies: ["Planejamento de movimentos", "Cascatas de combos", "Booster usage", "Level strategy"], updates: "Novos níveis adicionados semanalmente", trending: false},
-    
-    {id: 11, name: "Dota 2", icon: "🎮", genre: "MOBA", platform: ["PC"], players: "95M+", rating: 4.6, description: "O segundo maior MOBA com cena competitiva forte", guides: ["Guia de heróis", "Itemização avançada", "Posicionamento em fights", "Warding guide"], strategies: ["Farming patterns", "Roshan control", "Teamfight positioning", "Gank timing"], updates: "Patch 7.36 com balanceamento", trending: false},
-    
-    {id: 12, name: "Resident Evil Requiem", icon: "🧟", genre: "Survival Horror", platform: ["PC", "Console"], players: "50M+", rating: 4.8, description: "Lançamento 2026 que atingiu picos altíssimos", guides: ["Guia de armas", "Localização de itens", "Puzzle solutions", "Boss strategies"], strategies: ["Resource management", "Enemy avoidance", "Speedrun routes", "Puzzle solving"], updates: "DLC com novo conteúdo em breve", trending: true},
-    
-    {id: 13, name: "Apex Legends", icon: "⚡", genre: "Battle Royale", platform: ["PC", "Mobile", "Console"], players: "120M+", rating: 4.5, description: "Battle royale com sistema de heróis único", guides: ["Guia de lendas", "Rotação de mapa", "Combate em squad", "Legend abilities"], strategies: ["Posicionamento tático", "Ability combos", "Clutch plays", "Squad coordination"], updates: "Temporada 20 com novo herói", trending: true},
-    
-    {id: 14, name: "Call of Duty: Black Ops 6", icon: "🔫", genre: "FPS", platform: ["PC", "Console"], players: "80M+", rating: 4.6, description: "Último lançamento da série com sucesso massivo", guides: ["Guia de armas", "Mapa callouts", "Loadout otimizado", "Perk guide"], strategies: ["Posicionamento em multiplayer", "Campeamento eficiente", "Clutch moments", "Map control"], updates: "Novo mapa e armas adicionados", trending: true},
-    
-    {id: 15, name: "Elden Ring: Nightreign", icon: "⚔️", genre: "RPG de Ação", platform: ["PC", "Console"], players: "60M+", rating: 4.9, description: "Expansão/Sequência do fenômeno Elden Ring", guides: ["Guia de builds", "Boss strategies", "Localização de itens", "PvP guide"], strategies: ["Dodge timing", "Spell rotations", "Summon usage", "Parry techniques"], updates: "Patch com balanceamento de bosses", trending: true},
-    
-    {id: 16, name: "Baldur's Gate 3", icon: "🎲", genre: "RPG de Turno", platform: ["PC", "Console"], players: "70M+", rating: 4.9, description: "O padrão ouro atual para RPGs de turnos", guides: ["Guia de classes", "Builds otimizadas", "Questline completa", "Companion guide"], strategies: ["Posicionamento tático", "Spell selection", "Companion builds", "Combat tactics"], updates: "Patch 7 com novo conteúdo", trending: true},
-    
-    {id: 17, name: "Palworld", icon: "🦖", genre: "Sobrevivência/Coleção", platform: ["PC", "Console"], players: "45M+", rating: 4.5, description: "Continua mantendo uma base leal de jogadores", guides: ["Guia de Pals", "Breeding guide", "Base building", "Farming guide"], strategies: ["Farming eficiente", "Boss strategies", "Multiplayer cooperation", "Pal breeding"], updates: "Novo bioma adicionado", trending: false},
-    
-    {id: 18, name: "Honkai: Star Rail", icon: "✨", genre: "RPG de Turno", platform: ["PC", "Mobile", "Console"], players: "60M+", rating: 4.7, description: "RPG de turno com arte deslumbrante", guides: ["Guia de personagens", "Team building", "Abyss strategies", "Gacha guide"], strategies: ["Elemental reactions", "Break mechanics", "Support builds", "DPS optimization"], updates: "Novo personagem e mundo", trending: true},
-    
-    {id: 19, name: "Genshin Impact", icon: "🌍", genre: "RPG Mundo Aberto", platform: ["PC", "Mobile", "Console"], players: "80M+", rating: 4.6, description: "Referência em RPG de mundo aberto gratuito", guides: ["Guia de personagens", "Farming routes", "Abyss guide", "Gacha guide"], strategies: ["Team composition", "Elemental reactions", "Spiral Abyss", "Domain farming"], updates: "Versão 4.5 com novo reino", trending: true},
-    
-    {id: 20, name: "World of Warcraft", icon: "🐉", genre: "MMORPG", platform: ["PC"], players: "75M+", rating: 4.5, description: "Sempre no topo com novas expansões", guides: ["Guia de classes", "Raid strategies", "Farming guide", "PvP guide"], strategies: ["Dungeon tactics", "PvP strategies", "Gold farming", "Raid composition"], updates: "Expansão 'The War Within' em desenvolvimento", trending: false},
-    
-    // TIER 2 - POPULARES
-    {id: 21, name: "Stardew Valley", icon: "🌾", genre: "Simulação/Fazenda", platform: ["PC", "Mobile", "Console"], players: "30M+", rating: 4.9, description: "Indie essencial com comunidade fiel", guides: ["Guia de plantio", "Romance guide", "Fishing locations", "Mining guide"], strategies: ["Efficient farming", "Money making", "Speedrun routes", "Relationship guide"], updates: "Atualizações com novo conteúdo", trending: false},
-    
-    {id: 22, name: "Terraria", icon: "⛏️", genre: "Sandbox/Aventura", platform: ["PC", "Mobile", "Console"], players: "40M+", rating: 4.7, description: "Sandbox 2D com conteúdo massivo", guides: ["Guia de bosses", "Farming guide", "Building ideas", "Progression guide"], strategies: ["Boss strategies", "Efficient mining", "Hardmode progression", "Farming techniques"], updates: "Versão 1.4.4 com novo conteúdo", trending: false},
-    
-    {id: 23, name: "Among Us", icon: "👽", genre: "Party/Social", platform: ["Mobile", "PC"], players: "50M+", rating: 4.3, description: "Fenômeno social com comunidade ativa", guides: ["Guia de impostor", "Crewmate strategies", "Mapa callouts", "Role guide"], strategies: ["Bluffing tactics", "Vote manipulation", "Task efficiency", "Sabotage timing"], updates: "Novos mapas e roles", trending: false},
-    
-    {id: 24, name: "Overwatch 2", icon: "🎮", genre: "Shooter de Heróis", platform: ["PC", "Console"], players: "60M+", rating: 4.5, description: "Shooter de heróis competitivo", guides: ["Guia de heróis", "Posicionamento", "Ultimate economy", "Role guide"], strategies: ["Team composition", "Ult tracking", "Positioning", "Ult economy"], updates: "Novo herói e mapa adicionados", trending: true},
-    
-    {id: 25, name: "Rainbow Six Siege", icon: "🛡️", genre: "FPS Estratégico", platform: ["PC", "Console"], players: "70M+", rating: 4.6, description: "FPS estratégico com profundidade tática", guides: ["Guia de operadores", "Mapa callouts", "Estratégias de site", "Operator guide"], strategies: ["Drone usage", "Utility placement", "Clutch plays", "Map control"], updates: "Novo operador e mapa", trending: true},
-    
-    {id: 26, name: "Rocket League", icon: "⚽", genre: "Esporte/Carros", platform: ["PC", "Console"], players: "50M+", rating: 4.7, description: "Futebol com carros - esporte eletrônico puro", guides: ["Mecânicas avançadas", "Rotação ofensiva", "Defesa posicional", "Mechanics guide"], strategies: ["Aerial plays", "Wall shots", "Flip resets", "Rotation guide"], updates: "Novo modo e arena", trending: false},
-    
-    {id: 27, name: "Warframe", icon: "🤖", genre: "Looter Shooter", platform: ["PC", "Console"], players: "45M+", rating: 4.6, description: "Looter shooter com conteúdo infinito", guides: ["Guia de frames", "Farming guide", "Modding guide", "Progression guide"], strategies: ["Mission farming", "Build optimization", "Endgame content", "Resource farming"], updates: "Atualização com novo frame", trending: false},
-    
-    {id: 28, name: "The Sims 4", icon: "🏠", genre: "Simulação de Vida", platform: ["PC", "Console"], players: "35M+", rating: 4.5, description: "A referência em simulação de vida", guides: ["Guia de carreiras", "Building guide", "Cheats and mods", "Gameplay guide"], strategies: ["Money making", "Relationship building", "Career progression", "Skill leveling"], updates: "Novo pack de expansão", trending: false},
-    
-    {id: 29, name: "Cyberpunk 2077", icon: "🌃", genre: "RPG de Ação", platform: ["PC", "Console"], players: "40M+", rating: 4.5, description: "RPG de ação em mundo aberto futurista", guides: ["Guia de builds", "Missões principais", "Gigs guide", "Quest guide"], strategies: ["Combat builds", "Stealth approaches", "Hacking guide", "Build optimization"], updates: "Patch 2.1 com novo conteúdo", trending: false},
-    
-    {id: 30, name: "Black Myth: Wukong", icon: "🐵", genre: "Ação/Soulslike", platform: ["PC", "Console"], players: "35M+", rating: 4.8, description: "Soulslike com arte e combate espetacular", guides: ["Guia de bosses", "Builds guide", "Item locations", "Combat guide"], strategies: ["Boss strategies", "Dodge timing", "Stance switching", "Skill usage"], updates: "Novo DLC em desenvolvimento", trending: true},
-    
-    // TIER 3 - CRESCENTES
-    {id: 31, name: "Helldivers 2", icon: "🪖", genre: "Shooter Cooperativo", platform: ["PC", "Console"], players: "30M+", rating: 4.6, description: "Shooter cooperativo frenético", guides: ["Guia de classes", "Loadout guide", "Mission strategies", "Difficulty guide"], strategies: ["Team coordination", "Loadout optimization", "Mission tactics", "Enemy patterns"], updates: "Novo planeta e inimigos", trending: true},
-    
-    {id: 32, name: "Dragon Age: The Veilguard", icon: "🐉", genre: "RPG de Ação", platform: ["PC", "Console"], players: "25M+", rating: 4.5, description: "RPG épico com narrativa profunda", guides: ["Guia de classes", "Romance guide", "Quest guide", "Build guide"], strategies: ["Combat tactics", "Party composition", "Skill usage", "Difficulty guide"], updates: "Patch com balanceamento", trending: true},
-    
-    {id: 33, name: "Metaphor: ReFantazio", icon: "🎭", genre: "JRPG", platform: ["PC", "Console"], players: "20M+", rating: 4.8, description: "JRPG moderno com estilo único", guides: ["Guia de personagens", "Social link guide", "Combat guide", "Dungeon guide"], strategies: ["Persona fusion", "Combat tactics", "Social optimization", "Skill guide"], updates: "Novo DLC de conteúdo", trending: true},
-    
-    {id: 34, name: "Star Wars Outlaws", icon: "🚀", genre: "Ação/Aventura", platform: ["PC", "Console"], players: "15M+", rating: 4.5, description: "Aventura no universo Star Wars", guides: ["Guia de missões", "Stealth guide", "Combat guide", "Exploration guide"], strategies: ["Stealth tactics", "Combat approaches", "Puzzle solving", "Resource management"], updates: "Novo conteúdo planejado", trending: true},
-    
-    {id: 35, name: "Indiana Jones and the Great Circle", icon: "🎩", genre: "Aventura/Ação", platform: ["PC", "Console"], players: "12M+", rating: 4.6, description: "Aventura épica como Indiana Jones", guides: ["Guia de puzzles", "Combat guide", "Exploration guide", "Item guide"], strategies: ["Puzzle solving", "Combat tactics", "Exploration tips", "Secret locations"], updates: "Novo mapa em desenvolvimento", trending: true},
-    
-    {id: 36, name: "Tekken 8", icon: "👊", genre: "Luta", platform: ["PC", "Console"], players: "10M+", rating: 4.7, description: "Jogo de luta competitivo de topo", guides: ["Guia de personagens", "Combo guide", "Matchup guide", "Frame data"], strategies: ["Combo execution", "Matchup knowledge", "Mind games", "Spacing control"], updates: "Novo personagem adicionado", trending: true},
-    
-    {id: 37, name: "Street Fighter 6", icon: "🥊", genre: "Luta", platform: ["PC", "Console"], players: "12M+", rating: 4.6, description: "Referência em jogos de luta modernos", guides: ["Guia de personagens", "Combo guide", "Matchup guide", "Tutorial mode"], strategies: ["Combo execution", "Matchup knowledge", "Footsies", "Oki setups"], updates: "Novo DLC de personagem", trending: true},
-    
-    {id: 38, name: "Persona 5 Royal", icon: "🎭", genre: "JRPG", platform: ["PC", "Console"], players: "25M+", rating: 4.8, description: "JRPG clássico com estilo incomparável", guides: ["Guia de personagens", "Social link guide", "Persona fusion", "Dungeon guide"], strategies: ["Persona fusion", "Social optimization", "Combat tactics", "Skill guide"], updates: "Conteúdo adicional disponível", trending: false},
-    
-    {id: 39, name: "Final Fantasy VII Rebirth", icon: "⚔️", genre: "JRPG", platform: ["Console"], players: "20M+", rating: 4.7, description: "Continuação épica do remake", guides: ["Guia de personagens", "Combat guide", "Materia guide", "Quest guide"], strategies: ["Combat tactics", "Materia optimization", "Party composition", "Difficulty guide"], updates: "Novo conteúdo planejado", trending: true},
-    
-    {id: 40, name: "Metaphor: ReFantazio", icon: "🎮", genre: "JRPG", platform: ["PC", "Console"], players: "18M+", rating: 4.8, description: "JRPG com narrativa envolvente", guides: ["Guia de classes", "Social guide", "Combat guide", "Progression guide"], strategies: ["Social optimization", "Combat tactics", "Skill usage", "Resource management"], updates: "Novo conteúdo em breve", trending: true},
-    
-    // TIER 4 - INDIE E ALTERNATIVOS
-    {id: 41, name: "Hollow Knight: Silksong", icon: "🦗", genre: "Metroidvania", platform: ["PC", "Console"], players: "8M+", rating: 4.9, description: "Metroidvania esperado com gameplay refinado", guides: ["Guia de bosses", "Mapa guide", "Charm guide", "Progression guide"], strategies: ["Boss strategies", "Charm combinations", "Movement techniques", "Secret locations"], updates: "Patches com balanceamento", trending: true},
-    
-    {id: 42, name: "Hades II", icon: "👿", genre: "Roguelike", platform: ["PC", "Console"], players: "15M+", rating: 4.8, description: "Roguelike com narrativa e estilo", guides: ["Guia de armas", "Build guide", "Progression guide", "Boss guide"], strategies: ["Build optimization", "Weapon mastery", "Secret unlocks", "Speedrun routes"], updates: "Novo conteúdo adicionado", trending: true},
-    
-    {id: 43, name: "Vampire Survivors", icon: "🧛", genre: "Roguelike", platform: ["PC", "Mobile", "Console"], players: "20M+", rating: 4.5, description: "Roguelike viciante e acessível", guides: ["Guia de personagens", "Weapon guide", "Build guide", "Progression guide"], strategies: ["Build optimization", "Wave management", "Weapon synergy", "Survival tactics"], updates: "Novo personagem adicionado", trending: false},
-    
-    {id: 44, name: "Blasphemous 2", icon: "⚔️", genre: "Metroidvania", platform: ["PC", "Console"], players: "5M+", rating: 4.7, description: "Metroidvania sombrio e desafiador", guides: ["Guia de bosses", "Mapa guide", "Arma guide", "Progression guide"], strategies: ["Boss strategies", "Weapon selection", "Movement techniques", "Secret locations"], updates: "Patch com balanceamento", trending: false},
-    
-    {id: 45, name: "Pizza Tower", icon: "🍕", genre: "Plataforma", platform: ["PC", "Console"], players: "6M+", rating: 4.8, description: "Plataforma frenético e divertido", guides: ["Guia de níveis", "Combo guide", "Secret guide", "Speedrun guide"], strategies: ["Combo execution", "Level optimization", "Secret discovery", "Speedrun routes"], updates: "Novo conteúdo em breve", trending: false},
-    
-    {id: 46, name: "Cuphead", icon: "🎩", genre: "Plataforma/Luta", platform: ["PC", "Console"], players: "12M+", rating: 4.7, description: "Plataforma desafiador com arte única", guides: ["Guia de bosses", "Weapon guide", "Charm guide", "Progression guide"], strategies: ["Boss strategies", "Weapon selection", "Charm usage", "Pattern recognition"], updates: "DLC com novo conteúdo", trending: false},
-    
-    {id: 47, name: "Celeste", icon: "🏔️", genre: "Plataforma", platform: ["PC", "Console"], players: "10M+", rating: 4.9, description: "Plataforma desafiador e inspirador", guides: ["Guia de níveis", "Speedrun guide", "Secret guide", "Progression guide"], strategies: ["Movement techniques", "Speedrun routes", "Secret discovery", "Difficulty progression"], updates: "Conteúdo adicional disponível", trending: false},
-    
-    {id: 48, name: "Factorio", icon: "🏭", genre: "Simulação/Estratégia", platform: ["PC"], players: "8M+", rating: 4.8, description: "Simulação de fábrica viciante", guides: ["Guia de produção", "Automation guide", "Logistics guide", "Progression guide"], strategies: ["Factory optimization", "Production planning", "Resource management", "Expansion strategy"], updates: "Novo conteúdo planejado", trending: false},
-    
-    {id: 49, name: "Satisfactory", icon: "🏗️", genre: "Simulação/Construção", platform: ["PC"], players: "6M+", rating: 4.6, description: "Simulação de fábrica em primeira pessoa", guides: ["Guia de produção", "Factory design", "Logistics guide", "Progression guide"], strategies: ["Factory optimization", "Production planning", "Space management", "Efficiency tips"], updates: "Novo conteúdo em desenvolvimento", trending: false},
-    
-    {id: 50, name: "Subnautica", icon: "🌊", genre: "Exploração/Sobrevivência", platform: ["PC", "Console"], players: "15M+", rating: 4.7, description: "Exploração subaquática imersiva", guides: ["Guia de recursos", "Base building", "Progression guide", "Biome guide"], strategies: ["Resource gathering", "Base optimization", "Exploration routes", "Survival tactics"], updates: "Novo conteúdo disponível", trending: false}
+    // TOP 10 - GIGANTES GLOBAIS
+    {
+        id: 1,
+        name: "Roblox",
+        icon: "🎮",
+        genre: "Plataforma/Criação",
+        platform: ["Mobile", "PC", "Console"],
+        players: "380M+",
+        rating: 4.5,
+        description: "Plataforma líder em engajamento com mais de 380 milhões de usuários mensais",
+        guides: [
+            "Como criar seu primeiro jogo",
+            "Monetização no Roblox",
+            "Dicas de desenvolvimento"
+        ],
+        strategies: [
+            "Construir experiências virais",
+            "Engajar comunidade",
+            "Otimizar performance"
+        ],
+        updates: "Atualizado diariamente com novos jogos",
+        trending: true
+    },
+    {
+        id: 2,
+        name: "Minecraft",
+        icon: "⛏️",
+        genre: "Sandbox/Criação",
+        platform: ["PC", "Mobile", "Console"],
+        players: "300M+",
+        rating: 4.9,
+        description: "O rei do sandbox criativo com comunidade massiva",
+        guides: [
+            "Guia completo para iniciantes",
+            "Construindo estruturas épicas",
+            "Dominar o Nether e End"
+        ],
+        strategies: [
+            "Farm automática de recursos",
+            "Construção eficiente",
+            "Speedrun techniques"
+        ],
+        updates: "Atualização 1.21 com novos blocos e criaturas",
+        trending: true
+    },
+    {
+        id: 3,
+        name: "Fortnite",
+        icon: "🎯",
+        genre: "Battle Royale",
+        platform: ["PC", "Mobile", "Console"],
+        players: "250M+",
+        rating: 4.7,
+        description: "Fenômeno cultural multiplataforma com atualizações constantes",
+        guides: [
+            "Técnicas de construção avançada",
+            "Melhor drop spots",
+            "Guia de armas e itens"
+        ],
+        strategies: [
+            "Rotação de mapa eficiente",
+            "Combate close-range",
+            "Endgame positioning"
+        ],
+        updates: "Temporada 3 com novos personagens e armas",
+        trending: true
+    },
+    {
+        id: 4,
+        name: "Free Fire",
+        icon: "🔥",
+        genre: "Battle Royale",
+        platform: ["Mobile"],
+        players: "200M+",
+        rating: 4.6,
+        description: "Extremamente popular no Brasil e Sudeste Asiático",
+        guides: [
+            "Guia de personagens",
+            "Melhor loadout",
+            "Dicas para iniciantes"
+        ],
+        strategies: [
+            "Looting rápido",
+            "Posicionamento tático",
+            "Combate em squad"
+        ],
+        updates: "Novo mapa 'Bermuda' com mudanças",
+        trending: true
+    },
+    {
+        id: 5,
+        name: "PUBG Mobile",
+        icon: "🎖️",
+        genre: "Battle Royale",
+        platform: ["Mobile"],
+        players: "150M+",
+        rating: 4.5,
+        description: "O battle royale mais jogado em dispositivos móveis",
+        guides: [
+            "Controles otimizados",
+            "Gerenciamento de munição",
+            "Técnicas de mira"
+        ],
+        strategies: [
+            "Rotação de zona",
+            "Combate tático",
+            "Sobrevivência no final"
+        ],
+        updates: "Temporada 30 com novo conteúdo",
+        trending: false
+    },
+    {
+        id: 6,
+        name: "League of Legends",
+        icon: "⚔️",
+        genre: "MOBA",
+        platform: ["PC"],
+        players: "180M+",
+        rating: 4.8,
+        description: "Principal MOBA do mundo com cena competitiva massiva",
+        guides: [
+            "Guia de campeões",
+            "Posicionamento em teamfight",
+            "Macro play avançada"
+        ],
+        strategies: [
+            "Farming eficiente",
+            "Roaming e ganking",
+            "Baron control"
+        ],
+        updates: "Patch 14.5 com balanceamento de campeões",
+        trending: true
+    },
+    {
+        id: 7,
+        name: "Counter-Strike 2",
+        icon: "🎯",
+        genre: "FPS Tático",
+        platform: ["PC"],
+        players: "120M+",
+        rating: 4.9,
+        description: "O rei dos shooters táticos no PC",
+        guides: [
+            "Spray control avançado",
+            "Callouts de mapa",
+            "Economia de economia"
+        ],
+        strategies: [
+            "Execute de site",
+            "Anti-eco strategies",
+            "Smoke lineups"
+        ],
+        updates: "Patch com novo mapa 'Vertigo'",
+        trending: true
+    },
+    {
+        id: 8,
+        name: "Valorant",
+        icon: "🎮",
+        genre: "FPS Tático",
+        platform: ["PC"],
+        players: "100M+",
+        rating: 4.7,
+        description: "Competitivo de alto nível com agentes únicos",
+        guides: [
+            "Guia de agentes",
+            "Crosshair placement",
+            "Utilidade usage"
+        ],
+        strategies: [
+            "Site execute",
+            "Retake strategies",
+            "Ability combos"
+        ],
+        updates: "Novo agente 'Vyse' adicionado",
+        trending: true
+    },
+    {
+        id: 9,
+        name: "Grand Theft Auto V",
+        icon: "🚗",
+        genre: "Mundo Aberto",
+        platform: ["PC", "Console"],
+        players: "180M+",
+        rating: 4.8,
+        description: "Ainda incrivelmente relevante enquanto aguarda GTA VI",
+        guides: [
+            "Guia de missões",
+            "Dicas de roubo",
+            "Negócio de drogas"
+        ],
+        strategies: [
+            "Farming de dinheiro",
+            "Heists eficientes",
+            "PvP no GTA Online"
+        ],
+        updates: "Conteúdo semanal no GTA Online",
+        trending: false
+    },
+    {
+        id: 10,
+        name: "Candy Crush Saga",
+        icon: "🍬",
+        genre: "Puzzle",
+        platform: ["Mobile"],
+        players: "250M+",
+        rating: 4.4,
+        description: "Imbatível no público casual",
+        guides: [
+            "Estratégias de níveis difíceis",
+            "Uso de power-ups",
+            "Combos especiais"
+        ],
+        strategies: [
+            "Planejamento de movimentos",
+            "Cascatas de combos",
+            "Booster usage"
+        ],
+        updates: "Novos níveis adicionados semanalmente",
+        trending: false
+    },
+
+    // RANK 11-50 - SUCESSOS ATUAIS
+    {
+        id: 11,
+        name: "Dota 2",
+        icon: "🎮",
+        genre: "MOBA",
+        platform: ["PC"],
+        players: "95M+",
+        rating: 4.6,
+        description: "O segundo maior MOBA com cena competitiva forte",
+        guides: [
+            "Guia de heróis",
+            "Itemização avançada",
+            "Posicionamento em fights"
+        ],
+        strategies: [
+            "Farming patterns",
+            "Roshan control",
+            "Teamfight positioning"
+        ],
+        updates: "Patch 7.36 com balanceamento",
+        trending: false
+    },
+    {
+        id: 12,
+        name: "Resident Evil Requiem",
+        icon: "🧟",
+        genre: "Survival Horror",
+        platform: ["PC", "Console"],
+        players: "50M+",
+        rating: 4.8,
+        description: "Lançamento 2026 que atingiu picos altíssimos",
+        guides: [
+            "Guia de armas",
+            "Localização de itens",
+            "Puzzle solutions"
+        ],
+        strategies: [
+            "Resource management",
+            "Enemy avoidance",
+            "Speedrun routes"
+        ],
+        updates: "DLC com novo conteúdo em breve",
+        trending: true
+    },
+    {
+        id: 13,
+        name: "Apex Legends",
+        icon: "⚡",
+        genre: "Battle Royale",
+        platform: ["PC", "Mobile", "Console"],
+        players: "120M+",
+        rating: 4.5,
+        description: "Battle royale com sistema de heróis único",
+        guides: [
+            "Guia de lendas",
+            "Rotação de mapa",
+            "Combate em squad"
+        ],
+        strategies: [
+            "Posicionamento tático",
+            "Ability combos",
+            "Clutch plays"
+        ],
+        updates: "Temporada 20 com novo herói",
+        trending: true
+    },
+    {
+        id: 14,
+        name: "Call of Duty: Black Ops 6",
+        icon: "🔫",
+        genre: "FPS",
+        platform: ["PC", "Console"],
+        players: "80M+",
+        rating: 4.6,
+        description: "Último lançamento da série com sucesso massivo",
+        guides: [
+            "Guia de armas",
+            "Mapa callouts",
+            "Loadout otimizado"
+        ],
+        strategies: [
+            "Posicionamento em multiplayer",
+            "Campeamento eficiente",
+            "Clutch moments"
+        ],
+        updates: "Novo mapa e armas adicionados",
+        trending: true
+    },
+    {
+        id: 15,
+        name: "Elden Ring: Nightreign",
+        icon: "⚔️",
+        genre: "RPG de Ação",
+        platform: ["PC", "Console"],
+        players: "60M+",
+        rating: 4.9,
+        description: "Expansão/Sequência do fenômeno Elden Ring",
+        guides: [
+            "Guia de builds",
+            "Boss strategies",
+            "Localização de itens"
+        ],
+        strategies: [
+            "Dodge timing",
+            "Spell rotations",
+            "Summon usage"
+        ],
+        updates: "Patch com balanceamento de bosses",
+        trending: true
+    },
+    {
+        id: 16,
+        name: "Baldur's Gate 3",
+        icon: "🎲",
+        genre: "RPG de Turno",
+        platform: ["PC", "Console"],
+        players: "70M+",
+        rating: 4.9,
+        description: "O padrão ouro atual para RPGs de turnos",
+        guides: [
+            "Guia de classes",
+            "Builds otimizadas",
+            "Questline completa"
+        ],
+        strategies: [
+            "Posicionamento tático",
+            "Spell selection",
+            "Companion builds"
+        ],
+        updates: "Patch 7 com novo conteúdo",
+        trending: true
+    },
+    {
+        id: 17,
+        name: "Palworld",
+        icon: "🦖",
+        genre: "Sobrevivência/Coleção",
+        platform: ["PC", "Console"],
+        players: "45M+",
+        rating: 4.5,
+        description: "Continua mantendo uma base leal de jogadores",
+        guides: [
+            "Guia de Pals",
+            "Breeding guide",
+            "Base building"
+        ],
+        strategies: [
+            "Farming eficiente",
+            "Boss strategies",
+            "Multiplayer cooperation"
+        ],
+        updates: "Novo bioma adicionado",
+        trending: false
+    },
+    {
+        id: 18,
+        name: "Honkai: Star Rail",
+        icon: "✨",
+        genre: "RPG de Turno",
+        platform: ["PC", "Mobile", "Console"],
+        players: "60M+",
+        rating: 4.7,
+        description: "RPG de turno com arte deslumbrante",
+        guides: [
+            "Guia de personagens",
+            "Team building",
+            "Abyss strategies"
+        ],
+        strategies: [
+            "Elemental reactions",
+            "Break mechanics",
+            "Support builds"
+        ],
+        updates: "Novo personagem e mundo",
+        trending: true
+    },
+    {
+        id: 19,
+        name: "Genshin Impact",
+        icon: "🌍",
+        genre: "RPG Mundo Aberto",
+        platform: ["PC", "Mobile", "Console"],
+        players: "80M+",
+        rating: 4.6,
+        description: "Referência em RPG de mundo aberto gratuito",
+        guides: [
+            "Guia de personagens",
+            "Farming routes",
+            "Abyss guide"
+        ],
+        strategies: [
+            "Team composition",
+            "Elemental reactions",
+            "Spiral Abyss"
+        ],
+        updates: "Versão 4.5 com novo reino",
+        trending: true
+    },
+    {
+        id: 20,
+        name: "World of Warcraft",
+        icon: "🐉",
+        genre: "MMORPG",
+        platform: ["PC"],
+        players: "75M+",
+        rating: 4.5,
+        description: "Sempre no topo com novas expansões",
+        guides: [
+            "Guia de classes",
+            "Raid strategies",
+            "Farming guide"
+        ],
+        strategies: [
+            "Dungeon tactics",
+            "PvP strategies",
+            "Gold farming"
+        ],
+        updates: "Expansão 'The War Within' em desenvolvimento",
+        trending: false
+    },
+
+    // RANK 21-50 - SUCESSOS INDIE E ESPECIALIZADOS
+    {
+        id: 21,
+        name: "Stardew Valley",
+        icon: "🌾",
+        genre: "Simulação/Fazenda",
+        platform: ["PC", "Mobile", "Console"],
+        players: "30M+",
+        rating: 4.9,
+        description: "Indie essencial com comunidade fiel",
+        guides: [
+            "Guia de plantio",
+            "Romance guide",
+            "Fishing locations"
+        ],
+        strategies: [
+            "Efficient farming",
+            "Money making",
+            "Speedrun routes"
+        ],
+        updates: "Atualizações com novo conteúdo",
+        trending: false
+    },
+    {
+        id: 22,
+        name: "Terraria",
+        icon: "⛏️",
+        genre: "Sandbox/Aventura",
+        platform: ["PC", "Mobile", "Console"],
+        players: "40M+",
+        rating: 4.7,
+        description: "Sandbox 2D com conteúdo massivo",
+        guides: [
+            "Guia de bosses",
+            "Farming guide",
+            "Building ideas"
+        ],
+        strategies: [
+            "Boss strategies",
+            "Efficient mining",
+            "Hardmode progression"
+        ],
+        updates: "Versão 1.4.4 com novo conteúdo",
+        trending: false
+    },
+    {
+        id: 23,
+        name: "Among Us",
+        icon: "👽",
+        genre: "Party/Social",
+        platform: ["Mobile", "PC"],
+        players: "50M+",
+        rating: 4.3,
+        description: "Fenômeno social com comunidade ativa",
+        guides: [
+            "Guia de impostor",
+            "Crewmate strategies",
+            "Mapa callouts"
+        ],
+        strategies: [
+            "Bluffing tactics",
+            "Vote manipulation",
+            "Task efficiency"
+        ],
+        updates: "Novos mapas e roles",
+        trending: false
+    },
+    {
+        id: 24,
+        name: "Overwatch 2",
+        icon: "🎮",
+        genre: "Shooter de Heróis",
+        platform: ["PC", "Console"],
+        players: "60M+",
+        rating: 4.5,
+        description: "Shooter de heróis competitivo",
+        guides: [
+            "Guia de heróis",
+            "Posicionamento",
+            "Ultimate economy"
+        ],
+        strategies: [
+            "Team composition",
+            "Ult tracking",
+            "Positioning"
+        ],
+        updates: "Novo herói e mapa adicionados",
+        trending: true
+    },
+    {
+        id: 25,
+        name: "Rainbow Six Siege",
+        icon: "🛡️",
+        genre: "FPS Estratégico",
+        platform: ["PC", "Console"],
+        players: "70M+",
+        rating: 4.6,
+        description: "FPS estratégico com profundidade tática",
+        guides: [
+            "Guia de operadores",
+            "Mapa callouts",
+            "Estratégias de site"
+        ],
+        strategies: [
+            "Drone usage",
+            "Utility placement",
+            "Clutch plays"
+        ],
+        updates: "Novo operador e mapa",
+        trending: true
+    },
+    {
+        id: 26,
+        name: "Rocket League",
+        icon: "⚽",
+        genre: "Esporte/Carros",
+        platform: ["PC", "Console"],
+        players: "50M+",
+        rating: 4.7,
+        description: "Futebol com carros - esporte eletrônico puro",
+        guides: [
+            "Mecânicas avançadas",
+            "Rotação ofensiva",
+            "Defesa posicional"
+        ],
+        strategies: [
+            "Aerial plays",
+            "Wall shots",
+            "Flip resets"
+        ],
+        updates: "Novo modo e arena",
+        trending: false
+    },
+    {
+        id: 27,
+        name: "Warframe",
+        icon: "🤖",
+        genre: "Looter Shooter",
+        platform: ["PC", "Console"],
+        players: "45M+",
+        rating: 4.6,
+        description: "Looter shooter com conteúdo infinito",
+        guides: [
+            "Guia de frames",
+            "Farming guide",
+            "Modding guide"
+        ],
+        strategies: [
+            "Mission farming",
+            "Build optimization",
+            "Endgame content"
+        ],
+        updates: "Atualização com novo frame",
+        trending: false
+    },
+    {
+        id: 28,
+        name: "The Sims 4",
+        icon: "🏠",
+        genre: "Simulação de Vida",
+        platform: ["PC", "Console"],
+        players: "35M+",
+        rating: 4.5,
+        description: "A referência em simulação de vida",
+        guides: [
+            "Guia de carreiras",
+            "Building guide",
+            "Cheats and mods"
+        ],
+        strategies: [
+            "Money making",
+            "Relationship building",
+            "Career progression"
+        ],
+        updates: "Novo pack de expansão",
+        trending: false
+    },
+    {
+        id: 29,
+        name: "Cyberpunk 2077",
+        icon: "🌃",
+        genre: "RPG de Ação",
+        platform: ["PC", "Console"],
+        players: "40M+",
+        rating: 4.5,
+        description: "RPG de ação em mundo aberto futurista",
+        guides: [
+            "Guia de builds",
+            "Missões principais",
+            "Gigs guide"
+        ],
+        strategies: [
+            "Combat builds",
+            "Stealth approaches",
+            "Hacking guide"
+        ],
+        updates: "Patch 2.1 com novo conteúdo",
+        trending: false
+    },
+    {
+        id: 30,
+        name: "Black Myth: Wukong",
+        icon: "🐵",
+        genre: "Ação/Soulslike",
+        platform: ["PC", "Console"],
+        players: "35M+",
+        rating: 4.8,
+        description: "Soulslike com arte e combate espetacular",
+        guides: [
+            "Guia de bosses",
+            "Builds guide",
+            "Item locations"
+        ],
+        strategies: [
+            "Boss strategies",
+            "Dodge timing",
+            "Stance switching"
+        ],
+        updates: "Novo DLC em desenvolvimento",
+        trending: true
+    },
+
+    // RANK 31-50 - MAIS SUCESSOS
+    {
+        id: 31,
+        name: "Path of Exile",
+        icon: "⚔️",
+        genre: "ARPG",
+        platform: ["PC", "Console"],
+        players: "30M+",
+        rating: 4.6,
+        description: "ARPG complexo com profundidade infinita",
+        guides: [
+            "Guia de builds",
+            "Farming guide",
+            "Atlas strategy"
+        ],
+        strategies: [
+            "Skill gem combos",
+            "Passive tree",
+            "Endgame farming"
+        ],
+        updates: "Versão 4.0 com novo conteúdo",
+        trending: false
+    },
+    {
+        id: 32,
+        name: "Helldivers 2",
+        icon: "🪖",
+        genre: "Shooter Cooperativo",
+        platform: ["PC", "Console"],
+        players: "40M+",
+        rating: 4.7,
+        description: "Shooter cooperativo com diversão em squad",
+        guides: [
+            "Guia de classes",
+            "Estratégias de missão",
+            "Loadout guide"
+        ],
+        strategies: [
+            "Team coordination",
+            "Objective focus",
+            "Resource management"
+        ],
+        updates: "Novo planeta e inimigos",
+        trending: true
+    },
+    {
+        id: 33,
+        name: "Monster Hunter Wilds",
+        icon: "🐉",
+        genre: "Ação/Caça",
+        platform: ["PC", "Console"],
+        players: "35M+",
+        rating: 4.8,
+        description: "Caça de monstros com combate profundo",
+        guides: [
+            "Guia de armas",
+            "Monster guide",
+            "Armor sets"
+        ],
+        strategies: [
+            "Monster patterns",
+            "Weapon combos",
+            "Element usage"
+        ],
+        updates: "Novo monstro adicionado",
+        trending: true
+    },
+    {
+        id: 34,
+        name: "Rust",
+        icon: "🏚️",
+        genre: "Sobrevivência Hardcore",
+        platform: ["PC", "Console"],
+        players: "25M+",
+        rating: 4.4,
+        description: "Sobrevivência hardcore com PvP intenso",
+        guides: [
+            "Guia de construção",
+            "Farming guide",
+            "PvP tips"
+        ],
+        strategies: [
+            "Base defense",
+            "Raiding strategies",
+            "Resource farming"
+        ],
+        updates: "Novo conteúdo semanal",
+        trending: false
+    },
+    {
+        id: 35,
+        name: "Destiny 2",
+        icon: "🌟",
+        genre: "Looter Shooter",
+        platform: ["PC", "Console"],
+        players: "40M+",
+        rating: 4.5,
+        description: "Looter shooter com PvE e PvP",
+        guides: [
+            "Guia de classes",
+            "Raid guide",
+            "Weapon guide"
+        ],
+        strategies: [
+            "Loadout optimization",
+            "Raid strategies",
+            "PvP tactics"
+        ],
+        updates: "Nova expansão com conteúdo",
+        trending: false
+    },
+    {
+        id: 36,
+        name: "Garry's Mod",
+        icon: "🎨",
+        genre: "Sandbox",
+        platform: ["PC"],
+        players: "20M+",
+        rating: 4.6,
+        description: "Sandbox criativo com comunidade ativa",
+        guides: [
+            "Guia de modding",
+            "Lua scripting",
+            "Map creation"
+        ],
+        strategies: [
+            "Prop building",
+            "Ragdoll physics",
+            "Custom gamemodes"
+        ],
+        updates: "Novos mods e conteúdo",
+        trending: false
+    },
+    {
+        id: 37,
+        name: "Geometry Dash",
+        icon: "📐",
+        genre: "Plataforma/Ritmo",
+        platform: ["Mobile", "PC"],
+        players: "28M+",
+        rating: 4.7,
+        description: "Plataforma de ritmo viciante",
+        guides: [
+            "Guia de níveis",
+            "Técnicas de timing",
+            "Editor guide"
+        ],
+        strategies: [
+            "Timing precision",
+            "Pattern memorization",
+            "Custom level creation"
+        ],
+        updates: "Versão 2.2 com novo conteúdo",
+        trending: false
+    },
+    {
+        id: 38,
+        name: "Euro Truck Simulator 2",
+        icon: "🚚",
+        genre: "Simulação",
+        platform: ["PC"],
+        players: "22M+",
+        rating: 4.5,
+        description: "Simulador de caminhão relaxante",
+        guides: [
+            "Guia de rotas",
+            "Dicas de condução",
+            "Mods populares"
+        ],
+        strategies: [
+            "Efficient routes",
+            "Money management",
+            "Company building"
+        ],
+        updates: "Novo mapa e conteúdo",
+        trending: false
+    },
+    {
+        id: 39,
+        name: "Kingdom Come: Deliverance II",
+        icon: "⚔️",
+        genre: "RPG Histórico",
+        platform: ["PC", "Console"],
+        players: "20M+",
+        rating: 4.7,
+        description: "RPG histórico imersivo",
+        guides: [
+            "Guia de missões",
+            "Skill guide",
+            "Quest walkthrough"
+        ],
+        strategies: [
+            "Combat techniques",
+            "Stealth approaches",
+            "Dialogue choices"
+        ],
+        updates: "Novo conteúdo adicionado",
+        trending: false
+    },
+    {
+        id: 40,
+        name: "Final Fantasy VII Remake",
+        icon: "⚔️",
+        genre: "RPG de Ação",
+        platform: ["PC", "Console"],
+        players: "25M+",
+        rating: 4.8,
+        description: "Remake do clássico com gameplay moderno",
+        guides: [
+            "Guia de builds",
+            "Boss strategies",
+            "Quest guide"
+        ],
+        strategies: [
+            "Materia usage",
+            "Limit breaks",
+            "Boss tactics"
+        ],
+        updates: "Novo episódio em desenvolvimento",
+        trending: false
+    }
 ];
 
 // Função para buscar jogos
@@ -2690,110 +3474,8 @@ if (typeof module !== 'undefined' && module.exports) {
 
     // Carregar banco de dados de jogos
     const gamesDatabase = [
-    // TOP TIER - MAIS POPULARES
-    {id: 1, name: "Roblox", icon: "🎮", genre: "Plataforma/Criação", platform: ["Mobile", "PC", "Console"], players: "380M+", rating: 4.5, description: "Plataforma líder em engajamento com mais de 380 milhões de usuários mensais", guides: ["Como criar seu primeiro jogo", "Monetização no Roblox", "Dicas de desenvolvimento", "Scripting Lua avançado"], strategies: ["Construir experiências virais", "Engajar comunidade", "Otimizar performance", "Marketing de jogos"], updates: "Atualizado diariamente com novos jogos e features", trending: true},
-    
-    {id: 2, name: "Minecraft", icon: "⛏️", genre: "Sandbox/Criação", platform: ["PC", "Mobile", "Console"], players: "300M+", rating: 4.9, description: "O rei do sandbox criativo com comunidade massiva", guides: ["Guia completo para iniciantes", "Construindo estruturas épicas", "Dominar o Nether e End", "Redstone avançado"], strategies: ["Farm automática de recursos", "Construção eficiente", "Speedrun techniques", "PvP strategies"], updates: "Atualização 1.21 com novos blocos e criaturas", trending: true},
-    
-    {id: 3, name: "Fortnite", icon: "🎯", genre: "Battle Royale", platform: ["PC", "Mobile", "Console"], players: "250M+", rating: 4.7, description: "Fenômeno cultural multiplataforma com atualizações constantes", guides: ["Técnicas de construção avançada", "Melhor drop spots", "Guia de armas e itens", "Combate close-range"], strategies: ["Rotação de mapa eficiente", "Combate close-range", "Endgame positioning", "Building techniques"], updates: "Temporada 3 com novos personagens e armas", trending: true},
-    
-    {id: 4, name: "Free Fire", icon: "🔥", genre: "Battle Royale", platform: ["Mobile"], players: "200M+", rating: 4.6, description: "Extremamente popular no Brasil e Sudeste Asiático", guides: ["Guia de personagens", "Melhor loadout", "Dicas para iniciantes", "Mapa Bermuda"], strategies: ["Looting rápido", "Posicionamento tático", "Combate em squad", "Sobrevivência no final"], updates: "Novo mapa 'Bermuda' com mudanças", trending: true},
-    
-    {id: 5, name: "PUBG Mobile", icon: "🎖️", genre: "Battle Royale", platform: ["Mobile"], players: "150M+", rating: 4.5, description: "O battle royale mais jogado em dispositivos móveis", guides: ["Controles otimizados", "Gerenciamento de munição", "Técnicas de mira", "Loadout guide"], strategies: ["Rotação de zona", "Combate tático", "Sobrevivência no final", "Squad coordination"], updates: "Temporada 30 com novo conteúdo", trending: false},
-    
-    {id: 6, name: "League of Legends", icon: "⚔️", genre: "MOBA", platform: ["PC"], players: "180M+", rating: 4.8, description: "Principal MOBA do mundo com cena competitiva massiva", guides: ["Guia de campeões", "Posicionamento em teamfight", "Macro play avançada", "Jungle tracking"], strategies: ["Farming eficiente", "Roaming e ganking", "Baron control", "Wave management"], updates: "Patch 14.5 com balanceamento de campeões", trending: true},
-    
-    {id: 7, name: "Counter-Strike 2", icon: "🎯", genre: "FPS Tático", platform: ["PC"], players: "120M+", rating: 4.9, description: "O rei dos shooters táticos no PC", guides: ["Spray control avançado", "Callouts de mapa", "Economia de economia", "Smoke lineups"], strategies: ["Execute de site", "Anti-eco strategies", "Smoke lineups", "Retake tactics"], updates: "Patch com novo mapa 'Vertigo'", trending: true},
-    
-    {id: 8, name: "Valorant", icon: "🎮", genre: "FPS Tático", platform: ["PC"], players: "100M+", rating: 4.7, description: "Competitivo de alto nível com agentes únicos", guides: ["Guia de agentes", "Crosshair placement", "Utilidade usage", "Economy management"], strategies: ["Site execute", "Retake strategies", "Ability combos", "Positioning guide"], updates: "Novo agente 'Vyse' adicionado", trending: true},
-    
-    {id: 9, name: "Grand Theft Auto V", icon: "🚗", genre: "Mundo Aberto", platform: ["PC", "Console"], players: "180M+", rating: 4.8, description: "Ainda incrivelmente relevante enquanto aguarda GTA VI", guides: ["Guia de missões", "Dicas de roubo", "Negócio de drogas", "Heists guide"], strategies: ["Farming de dinheiro", "Heists eficientes", "PvP no GTA Online", "Business guide"], updates: "Conteúdo semanal no GTA Online", trending: false},
-    
-    {id: 10, name: "Candy Crush Saga", icon: "🍬", genre: "Puzzle", platform: ["Mobile"], players: "250M+", rating: 4.4, description: "Imbatível no público casual", guides: ["Estratégias de níveis difíceis", "Uso de power-ups", "Combos especiais", "Booster guide"], strategies: ["Planejamento de movimentos", "Cascatas de combos", "Booster usage", "Level strategy"], updates: "Novos níveis adicionados semanalmente", trending: false},
-    
-    {id: 11, name: "Dota 2", icon: "🎮", genre: "MOBA", platform: ["PC"], players: "95M+", rating: 4.6, description: "O segundo maior MOBA com cena competitiva forte", guides: ["Guia de heróis", "Itemização avançada", "Posicionamento em fights", "Warding guide"], strategies: ["Farming patterns", "Roshan control", "Teamfight positioning", "Gank timing"], updates: "Patch 7.36 com balanceamento", trending: false},
-    
-    {id: 12, name: "Resident Evil Requiem", icon: "🧟", genre: "Survival Horror", platform: ["PC", "Console"], players: "50M+", rating: 4.8, description: "Lançamento 2026 que atingiu picos altíssimos", guides: ["Guia de armas", "Localização de itens", "Puzzle solutions", "Boss strategies"], strategies: ["Resource management", "Enemy avoidance", "Speedrun routes", "Puzzle solving"], updates: "DLC com novo conteúdo em breve", trending: true},
-    
-    {id: 13, name: "Apex Legends", icon: "⚡", genre: "Battle Royale", platform: ["PC", "Mobile", "Console"], players: "120M+", rating: 4.5, description: "Battle royale com sistema de heróis único", guides: ["Guia de lendas", "Rotação de mapa", "Combate em squad", "Legend abilities"], strategies: ["Posicionamento tático", "Ability combos", "Clutch plays", "Squad coordination"], updates: "Temporada 20 com novo herói", trending: true},
-    
-    {id: 14, name: "Call of Duty: Black Ops 6", icon: "🔫", genre: "FPS", platform: ["PC", "Console"], players: "80M+", rating: 4.6, description: "Último lançamento da série com sucesso massivo", guides: ["Guia de armas", "Mapa callouts", "Loadout otimizado", "Perk guide"], strategies: ["Posicionamento em multiplayer", "Campeamento eficiente", "Clutch moments", "Map control"], updates: "Novo mapa e armas adicionados", trending: true},
-    
-    {id: 15, name: "Elden Ring: Nightreign", icon: "⚔️", genre: "RPG de Ação", platform: ["PC", "Console"], players: "60M+", rating: 4.9, description: "Expansão/Sequência do fenômeno Elden Ring", guides: ["Guia de builds", "Boss strategies", "Localização de itens", "PvP guide"], strategies: ["Dodge timing", "Spell rotations", "Summon usage", "Parry techniques"], updates: "Patch com balanceamento de bosses", trending: true},
-    
-    {id: 16, name: "Baldur's Gate 3", icon: "🎲", genre: "RPG de Turno", platform: ["PC", "Console"], players: "70M+", rating: 4.9, description: "O padrão ouro atual para RPGs de turnos", guides: ["Guia de classes", "Builds otimizadas", "Questline completa", "Companion guide"], strategies: ["Posicionamento tático", "Spell selection", "Companion builds", "Combat tactics"], updates: "Patch 7 com novo conteúdo", trending: true},
-    
-    {id: 17, name: "Palworld", icon: "🦖", genre: "Sobrevivência/Coleção", platform: ["PC", "Console"], players: "45M+", rating: 4.5, description: "Continua mantendo uma base leal de jogadores", guides: ["Guia de Pals", "Breeding guide", "Base building", "Farming guide"], strategies: ["Farming eficiente", "Boss strategies", "Multiplayer cooperation", "Pal breeding"], updates: "Novo bioma adicionado", trending: false},
-    
-    {id: 18, name: "Honkai: Star Rail", icon: "✨", genre: "RPG de Turno", platform: ["PC", "Mobile", "Console"], players: "60M+", rating: 4.7, description: "RPG de turno com arte deslumbrante", guides: ["Guia de personagens", "Team building", "Abyss strategies", "Gacha guide"], strategies: ["Elemental reactions", "Break mechanics", "Support builds", "DPS optimization"], updates: "Novo personagem e mundo", trending: true},
-    
-    {id: 19, name: "Genshin Impact", icon: "🌍", genre: "RPG Mundo Aberto", platform: ["PC", "Mobile", "Console"], players: "80M+", rating: 4.6, description: "Referência em RPG de mundo aberto gratuito", guides: ["Guia de personagens", "Farming routes", "Abyss guide", "Gacha guide"], strategies: ["Team composition", "Elemental reactions", "Spiral Abyss", "Domain farming"], updates: "Versão 4.5 com novo reino", trending: true},
-    
-    {id: 20, name: "World of Warcraft", icon: "🐉", genre: "MMORPG", platform: ["PC"], players: "75M+", rating: 4.5, description: "Sempre no topo com novas expansões", guides: ["Guia de classes", "Raid strategies", "Farming guide", "PvP guide"], strategies: ["Dungeon tactics", "PvP strategies", "Gold farming", "Raid composition"], updates: "Expansão 'The War Within' em desenvolvimento", trending: false},
-    
-    // TIER 2 - POPULARES
-    {id: 21, name: "Stardew Valley", icon: "🌾", genre: "Simulação/Fazenda", platform: ["PC", "Mobile", "Console"], players: "30M+", rating: 4.9, description: "Indie essencial com comunidade fiel", guides: ["Guia de plantio", "Romance guide", "Fishing locations", "Mining guide"], strategies: ["Efficient farming", "Money making", "Speedrun routes", "Relationship guide"], updates: "Atualizações com novo conteúdo", trending: false},
-    
-    {id: 22, name: "Terraria", icon: "⛏️", genre: "Sandbox/Aventura", platform: ["PC", "Mobile", "Console"], players: "40M+", rating: 4.7, description: "Sandbox 2D com conteúdo massivo", guides: ["Guia de bosses", "Farming guide", "Building ideas", "Progression guide"], strategies: ["Boss strategies", "Efficient mining", "Hardmode progression", "Farming techniques"], updates: "Versão 1.4.4 com novo conteúdo", trending: false},
-    
-    {id: 23, name: "Among Us", icon: "👽", genre: "Party/Social", platform: ["Mobile", "PC"], players: "50M+", rating: 4.3, description: "Fenômeno social com comunidade ativa", guides: ["Guia de impostor", "Crewmate strategies", "Mapa callouts", "Role guide"], strategies: ["Bluffing tactics", "Vote manipulation", "Task efficiency", "Sabotage timing"], updates: "Novos mapas e roles", trending: false},
-    
-    {id: 24, name: "Overwatch 2", icon: "🎮", genre: "Shooter de Heróis", platform: ["PC", "Console"], players: "60M+", rating: 4.5, description: "Shooter de heróis competitivo", guides: ["Guia de heróis", "Posicionamento", "Ultimate economy", "Role guide"], strategies: ["Team composition", "Ult tracking", "Positioning", "Ult economy"], updates: "Novo herói e mapa adicionados", trending: true},
-    
-    {id: 25, name: "Rainbow Six Siege", icon: "🛡️", genre: "FPS Estratégico", platform: ["PC", "Console"], players: "70M+", rating: 4.6, description: "FPS estratégico com profundidade tática", guides: ["Guia de operadores", "Mapa callouts", "Estratégias de site", "Operator guide"], strategies: ["Drone usage", "Utility placement", "Clutch plays", "Map control"], updates: "Novo operador e mapa", trending: true},
-    
-    {id: 26, name: "Rocket League", icon: "⚽", genre: "Esporte/Carros", platform: ["PC", "Console"], players: "50M+", rating: 4.7, description: "Futebol com carros - esporte eletrônico puro", guides: ["Mecânicas avançadas", "Rotação ofensiva", "Defesa posicional", "Mechanics guide"], strategies: ["Aerial plays", "Wall shots", "Flip resets", "Rotation guide"], updates: "Novo modo e arena", trending: false},
-    
-    {id: 27, name: "Warframe", icon: "🤖", genre: "Looter Shooter", platform: ["PC", "Console"], players: "45M+", rating: 4.6, description: "Looter shooter com conteúdo infinito", guides: ["Guia de frames", "Farming guide", "Modding guide", "Progression guide"], strategies: ["Mission farming", "Build optimization", "Endgame content", "Resource farming"], updates: "Atualização com novo frame", trending: false},
-    
-    {id: 28, name: "The Sims 4", icon: "🏠", genre: "Simulação de Vida", platform: ["PC", "Console"], players: "35M+", rating: 4.5, description: "A referência em simulação de vida", guides: ["Guia de carreiras", "Building guide", "Cheats and mods", "Gameplay guide"], strategies: ["Money making", "Relationship building", "Career progression", "Skill leveling"], updates: "Novo pack de expansão", trending: false},
-    
-    {id: 29, name: "Cyberpunk 2077", icon: "🌃", genre: "RPG de Ação", platform: ["PC", "Console"], players: "40M+", rating: 4.5, description: "RPG de ação em mundo aberto futurista", guides: ["Guia de builds", "Missões principais", "Gigs guide", "Quest guide"], strategies: ["Combat builds", "Stealth approaches", "Hacking guide", "Build optimization"], updates: "Patch 2.1 com novo conteúdo", trending: false},
-    
-    {id: 30, name: "Black Myth: Wukong", icon: "🐵", genre: "Ação/Soulslike", platform: ["PC", "Console"], players: "35M+", rating: 4.8, description: "Soulslike com arte e combate espetacular", guides: ["Guia de bosses", "Builds guide", "Item locations", "Combat guide"], strategies: ["Boss strategies", "Dodge timing", "Stance switching", "Skill usage"], updates: "Novo DLC em desenvolvimento", trending: true},
-    
-    // TIER 3 - CRESCENTES
-    {id: 31, name: "Helldivers 2", icon: "🪖", genre: "Shooter Cooperativo", platform: ["PC", "Console"], players: "30M+", rating: 4.6, description: "Shooter cooperativo frenético", guides: ["Guia de classes", "Loadout guide", "Mission strategies", "Difficulty guide"], strategies: ["Team coordination", "Loadout optimization", "Mission tactics", "Enemy patterns"], updates: "Novo planeta e inimigos", trending: true},
-    
-    {id: 32, name: "Dragon Age: The Veilguard", icon: "🐉", genre: "RPG de Ação", platform: ["PC", "Console"], players: "25M+", rating: 4.5, description: "RPG épico com narrativa profunda", guides: ["Guia de classes", "Romance guide", "Quest guide", "Build guide"], strategies: ["Combat tactics", "Party composition", "Skill usage", "Difficulty guide"], updates: "Patch com balanceamento", trending: true},
-    
-    {id: 33, name: "Metaphor: ReFantazio", icon: "🎭", genre: "JRPG", platform: ["PC", "Console"], players: "20M+", rating: 4.8, description: "JRPG moderno com estilo único", guides: ["Guia de personagens", "Social link guide", "Combat guide", "Dungeon guide"], strategies: ["Persona fusion", "Combat tactics", "Social optimization", "Skill guide"], updates: "Novo DLC de conteúdo", trending: true},
-    
-    {id: 34, name: "Star Wars Outlaws", icon: "🚀", genre: "Ação/Aventura", platform: ["PC", "Console"], players: "15M+", rating: 4.5, description: "Aventura no universo Star Wars", guides: ["Guia de missões", "Stealth guide", "Combat guide", "Exploration guide"], strategies: ["Stealth tactics", "Combat approaches", "Puzzle solving", "Resource management"], updates: "Novo conteúdo planejado", trending: true},
-    
-    {id: 35, name: "Indiana Jones and the Great Circle", icon: "🎩", genre: "Aventura/Ação", platform: ["PC", "Console"], players: "12M+", rating: 4.6, description: "Aventura épica como Indiana Jones", guides: ["Guia de puzzles", "Combat guide", "Exploration guide", "Item guide"], strategies: ["Puzzle solving", "Combat tactics", "Exploration tips", "Secret locations"], updates: "Novo mapa em desenvolvimento", trending: true},
-    
-    {id: 36, name: "Tekken 8", icon: "👊", genre: "Luta", platform: ["PC", "Console"], players: "10M+", rating: 4.7, description: "Jogo de luta competitivo de topo", guides: ["Guia de personagens", "Combo guide", "Matchup guide", "Frame data"], strategies: ["Combo execution", "Matchup knowledge", "Mind games", "Spacing control"], updates: "Novo personagem adicionado", trending: true},
-    
-    {id: 37, name: "Street Fighter 6", icon: "🥊", genre: "Luta", platform: ["PC", "Console"], players: "12M+", rating: 4.6, description: "Referência em jogos de luta modernos", guides: ["Guia de personagens", "Combo guide", "Matchup guide", "Tutorial mode"], strategies: ["Combo execution", "Matchup knowledge", "Footsies", "Oki setups"], updates: "Novo DLC de personagem", trending: true},
-    
-    {id: 38, name: "Persona 5 Royal", icon: "🎭", genre: "JRPG", platform: ["PC", "Console"], players: "25M+", rating: 4.8, description: "JRPG clássico com estilo incomparável", guides: ["Guia de personagens", "Social link guide", "Persona fusion", "Dungeon guide"], strategies: ["Persona fusion", "Social optimization", "Combat tactics", "Skill guide"], updates: "Conteúdo adicional disponível", trending: false},
-    
-    {id: 39, name: "Final Fantasy VII Rebirth", icon: "⚔️", genre: "JRPG", platform: ["Console"], players: "20M+", rating: 4.7, description: "Continuação épica do remake", guides: ["Guia de personagens", "Combat guide", "Materia guide", "Quest guide"], strategies: ["Combat tactics", "Materia optimization", "Party composition", "Difficulty guide"], updates: "Novo conteúdo planejado", trending: true},
-    
-    {id: 40, name: "Metaphor: ReFantazio", icon: "🎮", genre: "JRPG", platform: ["PC", "Console"], players: "18M+", rating: 4.8, description: "JRPG com narrativa envolvente", guides: ["Guia de classes", "Social guide", "Combat guide", "Progression guide"], strategies: ["Social optimization", "Combat tactics", "Skill usage", "Resource management"], updates: "Novo conteúdo em breve", trending: true},
-    
-    // TIER 4 - INDIE E ALTERNATIVOS
-    {id: 41, name: "Hollow Knight: Silksong", icon: "🦗", genre: "Metroidvania", platform: ["PC", "Console"], players: "8M+", rating: 4.9, description: "Metroidvania esperado com gameplay refinado", guides: ["Guia de bosses", "Mapa guide", "Charm guide", "Progression guide"], strategies: ["Boss strategies", "Charm combinations", "Movement techniques", "Secret locations"], updates: "Patches com balanceamento", trending: true},
-    
-    {id: 42, name: "Hades II", icon: "👿", genre: "Roguelike", platform: ["PC", "Console"], players: "15M+", rating: 4.8, description: "Roguelike com narrativa e estilo", guides: ["Guia de armas", "Build guide", "Progression guide", "Boss guide"], strategies: ["Build optimization", "Weapon mastery", "Secret unlocks", "Speedrun routes"], updates: "Novo conteúdo adicionado", trending: true},
-    
-    {id: 43, name: "Vampire Survivors", icon: "🧛", genre: "Roguelike", platform: ["PC", "Mobile", "Console"], players: "20M+", rating: 4.5, description: "Roguelike viciante e acessível", guides: ["Guia de personagens", "Weapon guide", "Build guide", "Progression guide"], strategies: ["Build optimization", "Wave management", "Weapon synergy", "Survival tactics"], updates: "Novo personagem adicionado", trending: false},
-    
-    {id: 44, name: "Blasphemous 2", icon: "⚔️", genre: "Metroidvania", platform: ["PC", "Console"], players: "5M+", rating: 4.7, description: "Metroidvania sombrio e desafiador", guides: ["Guia de bosses", "Mapa guide", "Arma guide", "Progression guide"], strategies: ["Boss strategies", "Weapon selection", "Movement techniques", "Secret locations"], updates: "Patch com balanceamento", trending: false},
-    
-    {id: 45, name: "Pizza Tower", icon: "🍕", genre: "Plataforma", platform: ["PC", "Console"], players: "6M+", rating: 4.8, description: "Plataforma frenético e divertido", guides: ["Guia de níveis", "Combo guide", "Secret guide", "Speedrun guide"], strategies: ["Combo execution", "Level optimization", "Secret discovery", "Speedrun routes"], updates: "Novo conteúdo em breve", trending: false},
-    
-    {id: 46, name: "Cuphead", icon: "🎩", genre: "Plataforma/Luta", platform: ["PC", "Console"], players: "12M+", rating: 4.7, description: "Plataforma desafiador com arte única", guides: ["Guia de bosses", "Weapon guide", "Charm guide", "Progression guide"], strategies: ["Boss strategies", "Weapon selection", "Charm usage", "Pattern recognition"], updates: "DLC com novo conteúdo", trending: false},
-    
-    {id: 47, name: "Celeste", icon: "🏔️", genre: "Plataforma", platform: ["PC", "Console"], players: "10M+", rating: 4.9, description: "Plataforma desafiador e inspirador", guides: ["Guia de níveis", "Speedrun guide", "Secret guide", "Progression guide"], strategies: ["Movement techniques", "Speedrun routes", "Secret discovery", "Difficulty progression"], updates: "Conteúdo adicional disponível", trending: false},
-    
-    {id: 48, name: "Factorio", icon: "🏭", genre: "Simulação/Estratégia", platform: ["PC"], players: "8M+", rating: 4.8, description: "Simulação de fábrica viciante", guides: ["Guia de produção", "Automation guide", "Logistics guide", "Progression guide"], strategies: ["Factory optimization", "Production planning", "Resource management", "Expansion strategy"], updates: "Novo conteúdo planejado", trending: false},
-    
-    {id: 49, name: "Satisfactory", icon: "🏗️", genre: "Simulação/Construção", platform: ["PC"], players: "6M+", rating: 4.6, description: "Simulação de fábrica em primeira pessoa", guides: ["Guia de produção", "Factory design", "Logistics guide", "Progression guide"], strategies: ["Factory optimization", "Production planning", "Space management", "Efficiency tips"], updates: "Novo conteúdo em desenvolvimento", trending: false},
-    
-    {id: 50, name: "Subnautica", icon: "🌊", genre: "Exploração/Sobrevivência", platform: ["PC", "Console"], players: "15M+", rating: 4.7, description: "Exploração subaquática imersiva", guides: ["Guia de recursos", "Base building", "Progression guide", "Biome guide"], strategies: ["Resource gathering", "Base optimization", "Exploration routes", "Survival tactics"], updates: "Novo conteúdo disponível", trending: false}
-];
+        // Os dados virão do arquivo games-database.js
+    ];
 
     let currentGamePortfolio = null;
 
