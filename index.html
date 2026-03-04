@@ -14,6 +14,36 @@
             padding: 0;
             box-sizing: border-box;
         }
+<script>
+const gamesDatabase = [
+    {id: 1, name: "Roblox", icon: "🎮", genre: "Plataforma", platform: ["Mobile", "PC"], players: "380M+", rating: 4.5, description: "Plataforma de criação de jogos", trending: true},
+    {id: 2, name: "Minecraft", icon: "⛏️", genre: "Sandbox", platform: ["PC", "Mobile", "Console"], players: "300M+", rating: 4.9, description: "Jogo sandbox clássico", trending: true},
+    {id: 3, name: "Fortnite", icon: "🎯", genre: "Battle Royale", platform: ["PC", "Mobile", "Console"], players: "250M+", rating: 4.7, description: "Battle royale com construção", trending: true},
+    {id: 4, name: "Free Fire", icon: "🔥", genre: "Battle Royale", platform: ["Mobile"], players: "200M+", rating: 4.6, description: "Battle royale mobile", trending: true},
+    {id: 5, name: "PUBG Mobile", icon: "🎪", genre: "Battle Royale", platform: ["Mobile"], players: "180M+", rating: 4.5, description: "Versão mobile do PUBG", trending: false},
+    {id: 6, name: "League of Legends", icon: "⚔️", genre: "MOBA", platform: ["PC"], players: "180M+", rating: 4.8, description: "MOBA competitivo", trending: false},
+    {id: 7, name: "Counter-Strike 2", icon: "🎲", genre: "FPS", platform: ["PC"], players: "140M+", rating: 4.9, description: "FPS tático clássico", trending: true},
+    {id: 8, name: "Valorant", icon: "🎯", genre: "FPS", platform: ["PC"], players: "120M+", rating: 4.7, description: "FPS tático com agentes", trending: false},
+    {id: 9, name: "GTA V", icon: "🚗", genre: "Ação", platform: ["PC", "Console"], players: "150M+", rating: 4.8, description: "Ação em mundo aberto", trending: false},
+    {id: 10, name: "Dota 2", icon: "🗡️", genre: "MOBA", platform: ["PC"], players: "100M+", rating: 4.7, description: "MOBA complexo", trending: false}
+];
+
+function searchGames() {
+    const input = document.getElementById('userSearchInput')?.value.toLowerCase() || '';
+    const container = document.getElementById('userGamesContainer');
+    if (!container) return;
+    
+    const filtered = gamesDatabase.filter(g => g.name.toLowerCase().includes(input));
+    container.innerHTML = filtered.map(g => `<div style="background: rgba(124, 58, 237, 0.1); border: 1px solid #7c3aed; border-radius: 10px; padding: 15px;"><div style="font-size: 32px;">${g.icon}</div><div style="font-weight: bold;">${g.name}</div><div style="color: #b0b0b0; font-size: 12px;">${g.genre}</div><div style="color: #00d4ff; font-size: 11px; margin-top: 8px;">${g.description}</div></div>`).join('');
+}
+
+window.addEventListener('load', () => {
+    const container = document.getElementById('userGamesContainer');
+    if (container && gamesDatabase.length > 0) {
+        container.innerHTML = gamesDatabase.map(g => `<div style="background: rgba(124, 58, 237, 0.1); border: 1px solid #7c3aed; border-radius: 10px; padding: 15px;"><div style="font-size: 32px;">${g.icon}</div><div style="font-weight: bold;">${g.name}</div><div style="color: #b0b0b0; font-size: 12px;">${g.genre}</div><div style="color: #00d4ff; font-size: 11px; margin-top: 8px;">${g.description}</div></div>`).join('');
+    }
+});
+</script>
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
